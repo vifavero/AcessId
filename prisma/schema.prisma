@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  name     String?  @db.VarChar(255)
+  email    String   @unique @db.VarChar(255)
+  password String
+  criadoEm DateTime @default(now())
+}
+
+model Kid {
+  id          Int          @id @default(autoincrement())
+  nameKids    String
+  nameParents String
+  endereco    String
+  telefone    BigInt
+  atipica     Boolean
+  restricao   Boolean
+  alergia     Boolean
+  description String
+  attendances Attendance[]
+}
+
+model Attendance {
+  id               Int       @id @default(autoincrement())
+  kidId            Int
+  classDate        DateTime // data do dia
+  qrCodeId         Int // número da pulseira (1, 2, 3...)
+  timestampEntrada DateTime  @default(now())
+  timestampSaida   DateTime?
+
+  kid Kid @relation(fields: [kidId], references: [id])
+
+  @@unique([classDate, qrCodeId]) // pulseira única por aula/dia
+}

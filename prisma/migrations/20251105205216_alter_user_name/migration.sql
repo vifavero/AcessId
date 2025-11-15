@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Kid" ALTER COLUMN "telefone" SET DATA TYPE BIGINT;
