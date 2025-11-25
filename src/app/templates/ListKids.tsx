@@ -39,7 +39,14 @@ export function ListKids() {
     fetchKids();
   }, []);
 
-  if (loading) return <p>Carregando...</p>;
+  while (loading)
+    return (
+      <div className="flex flex-col min-h-screen w-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+        <div className="bg-green-200 flex p-2 justify-center items-center">
+          <p>Sincronizando dados...</p>
+        </div>
+      </div>
+    );
 
   if (kids.length === 0)
     return (
@@ -52,20 +59,22 @@ export function ListKids() {
           </div>
         </div>
 
-        <footer className="w-full bg-white py-4 border-t flex justify-center">
+        <footer className="w-full bg-secondary py-4 border-t flex justify-center">
           <SelectButton />
         </footer>
       </div>
     );
 
   return (
-    <div className="flex flex-col gap-3 mt-5">
-      {kids.map((kid) => (
-        <Description key={kid.id} kid={kid} />
-      ))}
-      <div className="flex flex-col gap-10 items-center justify-center ">
-        <SelectButton />
+    <div className="flex flex-col min-h-screen w-screen items-center justify-center bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+      <div className="w-full md:w-1/2 bg-secondary p-5 ">
+        {kids.map((kid) => (
+          <Description key={kid.id} kid={kid} />
+        ))}
       </div>
+      <footer className="w-full bg-secondary py-4 flex justify-center">
+        <SelectButton />
+      </footer>
     </div>
   );
 }

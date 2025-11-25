@@ -1,36 +1,47 @@
-import { Button } from "@/components/ui/button";
 import { RiStickyNoteAddFill } from "react-icons/ri";
 import { PiQrCodeFill } from "react-icons/pi";
 import { MdAccountCircle } from "react-icons/md";
+import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { RiPresentationFill } from "react-icons/ri";
 
 export function SelectButton() {
   const navigate = useNavigate();
   return (
-    <footer>
-      <div className="flex gap-5 items-center justify-center outline-none border-none">
-        <button className="bg-orange-200" onClick={() => navigate("/forms")}>
-          <RiStickyNoteAddFill
-            size={25}
-            color="white"
-            className="shadow-lg shadow-orange-100"
-          />
-        </button>
-        <button className="bg-yellow-300" onClick={() => navigate("")}>
-          <PiQrCodeFill
-            size={25}
-            color="white"
-            className="shadow-lg shadow-yellow-200"
-          />
-        </button>
-        <button className="bg-green-300" onClick={() => navigate("")}>
-          <MdAccountCircle
-            size={25}
-            color="white"
-            className="shadow-lg shadow-green-200"
-          />
-        </button>
-      </div>
-    </footer>
+    <div className="flex gap-2 md:gap-5 outline-none border-none">
+      <button
+        className="bg-orange-200 p-2 rounded-xl"
+        onClick={() => navigate("/list")}
+      >
+        <IoMdHome size={25} color="white" />
+      </button>
+
+      <button
+        className="bg-blue-200 p-2 rounded-xl"
+        onClick={() => navigate("/forms")}
+      >
+        <RiStickyNoteAddFill size={25} color="white" />
+      </button>
+
+      <button
+        className="bg-yellow-300 p-2 rounded-xl"
+        onClick={() => navigate("/qrcode")}
+      >
+        <PiQrCodeFill size={25} color="white" />
+      </button>
+      <button
+        className="bg-purple-200 p-2 rounded-xl"
+        onClick={() => navigate("/attendance/presentes")}
+      >
+        <RiPresentationFill size={25} color="white" />
+      </button>
+
+      <button
+        className="bg-green-300 p-2 rounded-xl"
+        onClick={() => navigate("/profile")}
+      >
+        <MdAccountCircle size={25} color="white" />
+      </button>
+    </div>
   );
 }
