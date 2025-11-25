@@ -31,12 +31,18 @@ model Kid {
 model Attendance {
   id               Int       @id @default(autoincrement())
   kidId            Int
-  classDate        DateTime // data do dia
   qrCodeId         Int // número da pulseira (1, 2, 3...)
-  timestampEntrada DateTime  @default(now())
+  timestampEntrada DateTime  @default(now()) // data do dia
   timestampSaida   DateTime?
 
   kid Kid @relation(fields: [kidId], references: [id])
 
-  @@unique([classDate, qrCodeId]) // pulseira única por aula/dia
+  @@unique([timestampEntrada, qrCodeId]) // pulseira única por aula/dia
 }
+
+model Pulseiras {
+  id    Int    @id @default(autoincrement()) // 1 a 60
+  code  String 
+  status Boolean @default(true) 
+}
+
