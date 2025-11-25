@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { FormProvider, useForm } from "react-hook-form";
+import { SelectButton } from "../molecules/selectButton";
 
 export interface IRegister {
   name: string;
@@ -21,15 +22,14 @@ export function Register() {
       email: "",
       password: "",
     },
+    mode: "onBlur",
   });
 
   const handleSubmit = async (data: IRegister) => {
     try {
-      const res = await fetch(`http://localhost:3333/register`, {
+      const res = await fetch("http://localhost:3333/registerMonitors", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
@@ -38,68 +38,86 @@ export function Register() {
       }
 
       alert("Usuário registrado com sucesso!");
-      form.reset(); // Limpa o formulário após o registro
+      form.reset();
     } catch (error) {
       console.error(error);
       alert("Erro ao registrar usuário");
     }
   };
 
+  const formFields = [
+    {
+      name: "name",
+      label: "Nome Completo",
+      placeholder: "Digite seu nome",
+      type: "text",
+      bg: "bg-blue-200",
+    },
+    {
+      name: "email",
+      label: "Email",
+      placeholder: "Digite seu e-mail",
+      type: "email",
+      bg: "bg-purple-200",
+    },
+    {
+      name: "password",
+      label: "Senha",
+      placeholder: "Digite sua senha",
+      type: "password",
+      bg: "bg-blue-200",
+    },
+  ];
+
   return (
-    <FormProvider {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className="flex flex-col gap-3 p-5 w-screen items-center justify-center"
-      >
-        <div className="w-full md:w-1/2 space-y-5">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Nome</FormLabel>
-                <FormControl className="bg-blue-100 p-5">
-                  <Input placeholder="Digite seu nome" {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
+    <div className="flex flex-col min-h-screen w-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+      <FormProvider {...form}>
+        <form
+          autoComplete="off"
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className="flex flex-1 justify-center items-center w-full p-5"
+        >
+          <div className="w-full md:w-1/2 p-5 flex flex-col gap-5 items-center justify-center rounded-lg bg-secondary shadow-md">
+            {formFields.map(({ name, label, placeholder, type, bg }) => (
+              <FormField
+                key={name}
+                control={form.control}
+                name={name as keyof IRegister}
+                rules={{ required: `Campo obrigatório` }}
+                render={({ field, fieldState }) => (
+                  <FormItem className="w-full">
+                    <FormLabel>{label}</FormLabel>
+                    <FormControl className={`${bg} p-3 rounded-sm text-white`}>
+                      <Input
+                        type={type}
+                        placeholder={placeholder}
+                        {...field}
+                        className="w-full"
+                      />
+                    </FormControl>
+                    {fieldState.error && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {fieldState.error.message}
+                      </p>
+                    )}
+                  </FormItem>
+                )}
+              />
+            ))}
 
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl className="bg-purple-200 p-5">
-                  <Input placeholder="Digite o seu e-mail" {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
+            <Button
+              type="submit"
+              className="w-full md:w-1/2 text-white dark:text-dark bg-blue-dark hover:bg-blue-dark dark:bg-yellow-100 dark:hover:bg-yellow-200 transition"
+            >
+              Cadastrar
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
 
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Senha</FormLabel>
-                <FormControl className="bg-blue-100 p-5">
-                  <Input
-                    type="password"
-                    placeholder="Digite sua senha"
-                    {...field}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-
-          <Button type="submit" className="w-full md:w-1/4 bg-yellow-100">
-            Cadastrar
-          </Button>
-        </div>
-      </form>
-    </FormProvider>
+      <footer className="mt-auto w-full bg-secondary py-4 border-t flex justify-center">
+        <SelectButton />
+      </footer>
+    </div>
   );
 }
