@@ -96,7 +96,7 @@ export function Form() {
       autoComplete="off"
       className="flex flex-col gap-3 p-5 w-screen items-center justify-center "
     >
-      <div className=" flex flex-col gap-3 p-5 w-full md:w-1/2 items-center justify-center rounded-lg bg-white-100 ">
+      <div className=" flex flex-col gap-3 p-5 w-full md:w-1/2 items-center justify-center rounded-lg bg-secondary ">
         <div className="w-full space-y-3">
           <FormField
             control={form.control}
@@ -210,7 +210,11 @@ export function Form() {
           />
         </div>
 
-        <Button type="submit" variant={"default"} className="w-full md:w-1/4 ">
+        <Button
+          type="submit"
+          variant={"default"}
+          className="w-full md:w-1/4  dark:bg-yellow-100 dark:hover:bg-yellow-200 "
+        >
           Cadastrar
         </Button>
       </div>

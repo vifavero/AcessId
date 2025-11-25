@@ -54,13 +54,13 @@ export function CardLogin() {
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 w-full md:w-1/2  items-center"
+        className="flex flex-col gap-4 w-full md:w-1/2 items-center "
       >
         <Input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Digite seu email"
-          className="bg-blue-100 border-none"
+          className="bg-blue-100 border-none text-white"
           required
         />
         <Input
@@ -68,7 +68,7 @@ export function CardLogin() {
           onChange={(e) => setPassword(e.target.value)}
           type="password"
           placeholder="Digite sua senha"
-          className="bg-blue-100 border-none"
+          className="bg-blue-100 border-none text-white"
           required
         />
 
@@ -76,7 +76,7 @@ export function CardLogin() {
 
         <Button
           type="submit"
-          className="w-full  bg-blue-dark mt-2"
+          className="w-full  bg-blue-dark mt-2  dark:bg-yellow-100 dark:hover:bg-yellow-200"
           disabled={loading}
         >
           {loading ? "Entrando..." : "Entrar"}

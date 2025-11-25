@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { SelectButton } from "../molecules/selectButton";
-import { Description } from "../organisms/Description";
+import { KidsCard } from "../organisms/KidsCard";
 
-export function ListKids() {
+export function ListAttendance() {
   interface Kid {
     id: number;
     nameKids: string;
@@ -14,10 +14,10 @@ export function ListKids() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchKids = async () => {
+    const kidsAttendance = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`http://localhost:3333/list`, {
+        const res = await fetch(`http://localhost:3333/attendance/presentes`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -36,7 +36,7 @@ export function ListKids() {
       }
     };
 
-    fetchKids();
+    kidsAttendance();
   }, []);
 
   while (loading)
@@ -54,7 +54,7 @@ export function ListKids() {
         <div className="flex flex-1 flex-col items-center justify-center gap-10">
           <div className="flex items-center bg-blue-dark text-white rounded-2xl p-5 transition duration-500 hover:scale-125 hover:shadow-sm hover:shadow-blue-200">
             <p className="text-center text-2xl font-medium">
-              Nenhuma criança cadastrada
+              Nenhuma criança presente
             </p>
           </div>
         </div>
@@ -66,15 +66,20 @@ export function ListKids() {
     );
 
   return (
-    <div className="flex flex-col min-h-screen w-screen items-center justify-center bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
-      <div className="w-full md:w-1/2 bg-secondary p-5 ">
-        {kids.map((kid) => (
-          <Description key={kid.id} kid={kid} />
-        ))}
+    <>
+      <div className="flex flex-col min-h-screen w-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+        <div className="flex flex-col flex-grow items-center justify-center">
+          <div className="w-full md:w-1/2 bg-secondary p-5 rounded-2xl">
+            {kids.map((kid) => (
+              <KidsCard key={kid.id} kid={kid} />
+            ))}
+          </div>
+        </div>
+
+        <footer className="w-full bg-secondary py-4 flex justify-center">
+          <SelectButton />
+        </footer>
       </div>
-      <footer className="w-full bg-secondary py-4 flex justify-center">
-        <SelectButton />
-      </footer>
-    </div>
+    </>
   );
 }
