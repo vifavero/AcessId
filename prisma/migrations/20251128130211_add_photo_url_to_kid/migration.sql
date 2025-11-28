@@ -15,11 +15,12 @@ CREATE TABLE "Kid" (
     "nameKids" TEXT NOT NULL,
     "nameParents" TEXT NOT NULL,
     "endereco" TEXT NOT NULL,
-    "telefone" INTEGER NOT NULL,
+    "telefone" BIGINT NOT NULL,
     "atipica" BOOLEAN NOT NULL,
     "restricao" BOOLEAN NOT NULL,
     "alergia" BOOLEAN NOT NULL,
     "description" TEXT NOT NULL,
+    "photoUrl" TEXT NOT NULL,
 
     CONSTRAINT "Kid_pkey" PRIMARY KEY ("id")
 );
@@ -28,7 +29,6 @@ CREATE TABLE "Kid" (
 CREATE TABLE "Attendance" (
     "id" SERIAL NOT NULL,
     "kidId" INTEGER NOT NULL,
-    "classDate" TIMESTAMP(3) NOT NULL,
     "qrCodeId" INTEGER NOT NULL,
     "timestampEntrada" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "timestampSaida" TIMESTAMP(3),
@@ -36,11 +36,20 @@ CREATE TABLE "Attendance" (
     CONSTRAINT "Attendance_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "Pulseiras" (
+    "id" SERIAL NOT NULL,
+    "code" TEXT NOT NULL,
+    "status" BOOLEAN NOT NULL DEFAULT true,
+
+    CONSTRAINT "Pulseiras_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Attendance_classDate_qrCodeId_key" ON "Attendance"("classDate", "qrCodeId");
+CREATE UNIQUE INDEX "Attendance_timestampEntrada_qrCodeId_key" ON "Attendance"("timestampEntrada", "qrCodeId");
 
 -- AddForeignKey
 ALTER TABLE "Attendance" ADD CONSTRAINT "Attendance_kidId_fkey" FOREIGN KEY ("kidId") REFERENCES "Kid"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
