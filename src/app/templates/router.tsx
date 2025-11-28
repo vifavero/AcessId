@@ -5,7 +5,6 @@ import { ListKids } from "./ListKids";
 import { Profile } from "./Profile";
 import { Register } from "../organisms/Register";
 import { ListAttendance } from "./ListAttendance";
-import { Scanner } from "../organisms/qrCode";
 import { ScannerQrCode } from "./Scanner";
 
 export const router = createBrowserRouter([
