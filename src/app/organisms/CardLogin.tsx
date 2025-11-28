@@ -10,6 +10,7 @@ export function CardLogin() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.API_URL;
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -17,7 +18,7 @@ export function CardLogin() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3333/login", {
+      const res = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

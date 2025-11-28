@@ -1,17 +1,27 @@
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 
 import { createContext } from "react";
 
-export const FormContext = createContext({
+interface FormData {
+  nameKids: string;
+  nameParents: string;
+  description: string;
+}
+
+interface Props {
+  children: React.ReactNode;
+}
+
+interface FormContextType extends FormData {
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+}
+
+export const FormContext = createContext<FormContextType>({
   nameKids: "",
   nameParents: "",
   description: "",
-  setFormData: (data: any) => {},
+  setFormData: () => {},
 });
-
-interface Props {
-  children: ReactNode;
-}
 
 export function FormProvider({ children }: Props) {
   const [formData, setFormData] = useState({

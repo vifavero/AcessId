@@ -12,12 +12,13 @@ export function ListAttendance() {
   }
   const [kids, setKids] = useState<Kid[]>([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.API_URL;
 
   useEffect(() => {
     const kidsAttendance = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`http://localhost:3333/attendance/presentes`, {
+        const res = await fetch(`${API_URL}/attendance`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

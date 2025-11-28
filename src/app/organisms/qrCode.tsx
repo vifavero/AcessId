@@ -6,11 +6,11 @@ export function Scanner() {
   const [resultado, setResultado] = useState<string>("");
   const [scanning, setScanning] = useState(false);
   const [erroPermissao, setErroPermissao] = useState("");
+  const API_URL = import.meta.env.API_URL;
 
   const html5QrcodeRef = useRef<Html5Qrcode | null>(null);
   const ultimoResultadoRef = useRef<string>("");
 
-  // Função para enviar saída para o backend
   const enviarSaida = async (qrCodeId: number) => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -18,7 +18,7 @@ export function Scanner() {
       return;
     }
 
-    // Validação
+    // validação
     const qrCodeIdNum = Number(qrCodeId);
     if (isNaN(qrCodeIdNum) || qrCodeIdNum <= 0) {
       toast.error("QR Code inválido. Deve ser um número positivo.");
@@ -28,7 +28,7 @@ export function Scanner() {
     const payload = { qrCodeId: qrCodeIdNum };
 
     try {
-      const res = await fetch("http://localhost:3333/qrcode", {
+      const res = await fetch(`${API_URL}/qrcode`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,6 @@ export function Scanner() {
       const data = await res.json();
 
       if (!res.ok) {
-        // Mostrar erro específico do backend
         if (data.error) {
           if (typeof data.error === "string") {
             toast.error(data.error);
