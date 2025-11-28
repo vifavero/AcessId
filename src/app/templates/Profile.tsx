@@ -16,12 +16,13 @@ export function Profile() {
   };
   const [monitors, setMonitors] = useState<AccountProps | null>(null);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.API_URL;
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:3333/profile", {
+        const res = await fetch(`${API_URL}/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -24,10 +24,11 @@ export function Register() {
     },
     mode: "onBlur",
   });
+  const API_URL = import.meta.env.API_URL;
 
   const handleSubmit = async (data: IRegister) => {
     try {
-      const res = await fetch("http://localhost:3333/registerMonitors", {
+      const res = await fetch(`${API_URL}/registerMonitors`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

@@ -38,6 +38,7 @@ export function Form() {
   });
 
   const { setFormData } = useContext(FormContext);
+  const API_URL = import.meta.env.API_URL;
 
   const nameKids = form.watch("nameKids");
   const nameParents = form.watch("nameParents");
@@ -65,7 +66,7 @@ export function Form() {
 
       console.log("📦 Enviando para o backend:", payload);
 
-      const res = await fetch("http://localhost:3333/forms", {
+      const res = await fetch(`${API_URL}/forms`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

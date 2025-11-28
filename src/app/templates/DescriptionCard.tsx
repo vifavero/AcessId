@@ -13,10 +13,10 @@ export function DescriptionCard() {
 
   return (
     <div className="flex items-center justify-center gap-10 p-5 bg-secondary rounded-2xl ">
-      <img
+      {/* <img
         src="src/assets/images/kid.jpg"
         className="rounded-full w-20 h-20 md:w-32 md:h-32 object-cover"
-      />
+      /> */}
 
       <Card className="flex flex-col gap-4 p-6 bg-orange-100 ">
         <div className="text-white text-sm space-y-2 ">

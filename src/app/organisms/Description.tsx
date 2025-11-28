@@ -37,6 +37,7 @@ interface Pulseira {
 export function Description({ kid }: { kid: Kid }) {
   const [pulseiras, setPulseiras] = useState<Pulseira[]>([]);
   const [selectedPulseira, setSelectedPulseira] = useState<string>("");
+  const API_URL = import.meta.env.API_URL;
 
   const [open, setOpen] = useState(false);
 
@@ -44,7 +45,7 @@ export function Description({ kid }: { kid: Kid }) {
     try {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("Usuário não autenticado");
-      const res = await fetch("http://localhost:3333/attendance", {
+      const res = await fetch(`${API_URL}/attendance`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +93,7 @@ export function Description({ kid }: { kid: Kid }) {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("Usuário não autenticado");
 
-      const res = await fetch("http://localhost:3333/attendance", {
+      const res = await fetch(`${API_URL}/attendance`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
