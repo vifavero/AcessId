@@ -6,7 +6,7 @@ export function Scanner() {
   const [resultado, setResultado] = useState<string>("");
   const [scanning, setScanning] = useState(false);
   const [erroPermissao, setErroPermissao] = useState("");
-  const API_URL = import.meta.env.API_URL;
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const html5QrcodeRef = useRef<Html5Qrcode | null>(null);
   const ultimoResultadoRef = useRef<string>("");

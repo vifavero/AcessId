@@ -16,7 +16,7 @@ export function Profile() {
   };
   const [monitors, setMonitors] = useState<AccountProps | null>(null);
   const navigate = useNavigate();
-  const API_URL = import.meta.env.API_URL;
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProfile = async () => {
