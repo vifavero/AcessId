@@ -37,7 +37,7 @@ interface Pulseira {
 export function Description({ kid }: { kid: Kid }) {
   const [pulseiras, setPulseiras] = useState<Pulseira[]>([]);
   const [selectedPulseira, setSelectedPulseira] = useState<string>("");
-  const API_URL = import.meta.env.API_URL;
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [open, setOpen] = useState(false);
 

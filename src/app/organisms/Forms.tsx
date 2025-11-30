@@ -38,7 +38,7 @@ export function Form() {
   });
 
   const { setFormData } = useContext(FormContext);
-  const API_URL = import.meta.env.API_URL;
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const nameKids = form.watch("nameKids");
   const nameParents = form.watch("nameParents");
