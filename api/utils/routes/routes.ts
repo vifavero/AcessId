@@ -1,9 +1,9 @@
 import fastifyPkg from "fastify";
 import type { FastifyInstance } from "fastify";
 import z from "zod";
-import { verifyToken } from "../jwt";
-import { prisma } from "../prisma";
-import { nowSP } from "../data";
+import { verifyToken } from "../jwt.ts";
+import { prisma } from "../prisma.ts";
+import { nowSP } from "../data.ts";
 import { toZonedTime, format } from "date-fns-tz";
 import { startOfDay, endOfDay } from "date-fns";
 
