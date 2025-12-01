@@ -42,7 +42,7 @@ export function ListKids() {
 
   while (loading)
     return (
-      <div className="flex flex-col min-h-screen w-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+      <div className="flex flex-col min-h-screen w-screen bg-[url('/images/pattern.png')] bg-cover bg-center">
         <div className="bg-green-200 flex p-2 justify-center items-center">
           <p>Sincronizando dados...</p>
         </div>
@@ -51,7 +51,7 @@ export function ListKids() {
 
   if (kids.length === 0)
     return (
-      <div className="flex flex-col min-h-screen w-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+      <div className="flex flex-col min-h-screen w-screen bg-[url('/images/pattern.png')] bg-cover bg-center">
         <div className="flex flex-1 flex-col items-center justify-center gap-10">
           <div className="flex items-center bg-blue-dark text-white rounded-2xl p-5 transition duration-500 hover:scale-125 hover:shadow-sm hover:shadow-blue-200">
             <p className="text-center text-2xl font-medium">
@@ -67,7 +67,7 @@ export function ListKids() {
     );
 
   return (
-    <div className="flex flex-col min-h-screen w-screen items-center justify-center bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+    <div className="flex flex-col min-h-screen w-screen items-center justify-center bg-[url('/images/pattern.png')] bg-cover bg-center">
       <div className="w-full md:w-1/2 bg-secondary p-5 ">
         {kids.map((kid) => (
           <Description key={kid.id} kid={kid} />

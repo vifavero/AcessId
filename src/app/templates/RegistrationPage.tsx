@@ -21,7 +21,7 @@ export function RegistrationPage() {
   return (
     <MyProvider>
       <RHFProvider {...form}>
-        <div className="relative min-h-screen w-screen flex flex-col items-center bg-[url('src/assets/images/pattern.png')] bg-cover bg-center ">
+        <div className="relative min-h-screen w-screen flex flex-col items-center bg-[url('/images/pattern.png')] bg-cover bg-center ">
           <header className="w-full flex justify-center md:justify-start items-center p-4 bg-secondary/90 shadow-md">
             <SelectButton />
           </header>
