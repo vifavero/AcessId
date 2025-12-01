@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import logo from "src/assets/images/cqv.png";
 
 export function CardLogin() {
   const [email, setEmail] = useState("");
@@ -24,31 +25,33 @@ export function CardLogin() {
         body: JSON.stringify({ email, password }),
       });
 
+      const data = await res.json().catch(() => null);
+
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Erro ao logar");
+        const msg = data?.error || data?.message || "Erro ao logar";
+        throw new Error(msg);
       }
 
-      const data = await res.json();
+      if (!data?.token) {
+        throw new Error("Token não recebido do servidor.");
+      }
+
       localStorage.setItem("token", data.token);
-
-      console.log("Login realizado com sucesso:", data);
-
       navigate("/list");
     } catch (err: any) {
-      setError(err.message);
       console.error(err);
+      setError(err?.message || "Erro inesperado");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col gap-5 items-center justify-center w-screen h-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center p-4">
+    <div className="flex flex-col gap-5 items-center justify-center w-screen h-screen bg-[url('/images/pattern.png')] bg-cover bg-center p-4">
       <Card className="flex w-full md:w-1/2 h-1/2 bg-yellow-100 items-center justify-center border-none">
         <img
           className="h-1/2 md:h-full w-auto object-contain"
-          src="src/assets/images/cqv.png"
+          src={logo}
           alt="Logo CQV"
         />
       </Card>

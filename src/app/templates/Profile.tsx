@@ -44,7 +44,7 @@ export function Profile() {
 
   if (!monitors)
     return (
-      <div className="flex flex-col min-h-screen w-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+      <div className="flex flex-col min-h-screen w-screen bg-[url('/images/pattern.png')] bg-cover bg-center">
         <div className="bg-green-200 flex p-2 justify-center items-center">
           <p>Sincronizando dados...</p>
         </div>
@@ -52,7 +52,7 @@ export function Profile() {
     );
 
   return (
-    <div className="flex flex-col min-h-screen w-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+    <div className="flex flex-col min-h-screen w-screen bg-[url('/images/pattern.png')] bg-cover bg-center">
       <div className="flex flex-col gap-10 flex-1 items-center justify-center">
         <div className="bg-secondary flex flex-col justify-center w-full md:w-1/2 items-center p-5 rounded-2xl">
           <div className="flex flex-col justify-center items-center bg-yellow-100 dark:text-dark dark:font-semibold p-3 w-full rounded-lg">

@@ -71,7 +71,7 @@ export function Register() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen w-screen bg-[url('src/assets/images/pattern.png')] bg-cover bg-center">
+    <div className="flex flex-col min-h-screen w-screen bg-[url('/images/pattern.png')] bg-cover bg-center">
       <FormProvider {...form}>
         <form
           autoComplete="off"
