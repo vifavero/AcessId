@@ -18,7 +18,7 @@ export function ListAttendance() {
     const kidsAttendance = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`${API_URL}/attendance`, {
+        const res = await fetch(`${API_URL}/attendance/presentes`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
