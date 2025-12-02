@@ -18,9 +18,8 @@ fastify.register(fastifyCors, {
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 });
 
-// Registrando rotas da API
-fastify.register(authRoutes);
-fastify.register(Routes);
+fastify.register(authRoutes, { prefix: "/api" });
+fastify.register(Routes, { prefix: "/api" });
 
 // Rota teste
 fastify.get("/api", async () => {
