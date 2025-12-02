@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { hashSecurity } from "./utils/hash";
+import { hashSecurity } from "./utils/hash.ts";
 
 const prisma = new PrismaClient();
 

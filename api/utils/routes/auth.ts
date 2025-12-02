@@ -1,8 +1,9 @@
 import { type FastifyInstance } from "fastify";
-import { hashSecurity, verifySecurity } from "../hash";
-import { token } from "../jwt";
+import { hashSecurity, verifySecurity } from "../hash.ts";
+
+import { token } from "../jwt.ts";
 import { z } from "zod";
-import { prisma } from "../prisma";
+import { prisma } from "../prisma.ts";
 
 export async function authRoutes(app: FastifyInstance) {
   // schemas
