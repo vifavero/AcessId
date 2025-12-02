@@ -8,7 +8,10 @@ dotenv.config();
 
 const fastify = Fastify({ logger: true });
 
-fastify.register(fastifyCors, { origin: true });
+fastify.register(fastifyCors, {
+  origin: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+});
 
 fastify.register(authRoutes);
 fastify.register(Routes);
