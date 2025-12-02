@@ -3,14 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "dev:server": "ts-node api/server.ts",
-    "speed": "ts-node api/createAdmin.ts",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+"scripts": {
+  "dev": "vite",
+  "dev:server": "ts-node api/server.ts",
+  "build": "tsc -b tsconfig.build.json && vite build",
+  "start": "node dist/api/server.js"
+},
   "dependencies": {
     "@fastify/cors": "^11.1.0",
     "@fastify/jwt": "^10.0.0",
