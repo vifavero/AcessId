@@ -300,7 +300,7 @@ export default async function Routes(app: FastifyInstance) {
       console.log("Registros encontrados:", presentes.length);
 
       return reply.send(
-        presentes.map((p: Attendance & { kid: Kid }) => ({
+        presentes.map((p: any) => ({
           id: p.kid.id,
           nameKids: p.kid.nameKids,
           nameParents: p.kid.nameParents,
