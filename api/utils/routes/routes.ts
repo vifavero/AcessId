@@ -6,6 +6,7 @@ import { prisma } from "../prisma";
 import { nowSP } from "../data";
 import { toZonedTime, format } from "date-fns-tz";
 import { startOfDay, endOfDay } from "date-fns";
+import { Attendance, Kid } from "@prisma/client";
 
 export default async function Routes(app: FastifyInstance) {
   // schemas
@@ -299,7 +300,7 @@ export default async function Routes(app: FastifyInstance) {
       console.log("Registros encontrados:", presentes.length);
 
       return reply.send(
-        presentes.map((p) => ({
+        presentes.map((p: Attendance & { kid: Kid }) => ({
           id: p.kid.id,
           nameKids: p.kid.nameKids,
           nameParents: p.kid.nameParents,
