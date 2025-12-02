@@ -3,12 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-"scripts": {
-  "dev": "vite",
-  "dev:server": "ts-node api/server.ts",
-  "build": "tsc -b tsconfig.build.json && vite build",
-  "start": "node dist/api/server.js"
-},
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "ts-node api/server.ts",
+    "build:backend": "tsc -b tsconfig.build.json",
+    "build:frontend": "vite build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "start": "node dist/api/server.js"
+  },
   "dependencies": {
     "@fastify/cors": "^11.1.0",
     "@fastify/jwt": "^10.0.0",
