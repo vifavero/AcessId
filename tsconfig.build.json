@@ -1,12 +1,14 @@
 {
-  "extends": "./tsconfig.node.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
     "outDir": "dist/api",
     "rootDir": "api",
+
     "module": "NodeNext",
     "target": "ES2022",
     "moduleResolution": "NodeNext",
+
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
