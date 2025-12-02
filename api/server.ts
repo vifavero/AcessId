@@ -1,8 +1,8 @@
 import Fastify from "fastify";
 import fastifyCors from "@fastify/cors";
 import dotenv from "dotenv";
-import Routes from "./utils/routes/routes.ts";
-import { authRoutes } from "./utils/routes/auth.ts";
+import Routes from "./utils/routes/routes";
+import { authRoutes } from "./utils/routes/auth";
 
 dotenv.config();
 
