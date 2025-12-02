@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist/api",
+    "rootDir": "api",
+    "module": "CommonJS"
+  },
+  "include": ["api/**/*"]
+}
