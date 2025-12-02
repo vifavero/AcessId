@@ -5,8 +5,8 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import Routes from "./utils/routes/routes";
-import { authRoutes } from "./utils/routes/auth";
+import Routes from "./utils/routes/routes.js";
+import { authRoutes } from "./utils/routes/auth.js";
 
 dotenv.config();
 

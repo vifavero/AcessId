@@ -1,9 +1,9 @@
 import fastifyPkg from "fastify";
 import type { FastifyInstance } from "fastify";
 import z from "zod";
-import { verifyToken } from "../jwt";
-import { prisma } from "../prisma";
-import { nowSP } from "../data";
+import { verifyToken } from "../jwt.js";
+import { prisma } from "../prisma.js";
+import { nowSP } from "../data.js";
 import { toZonedTime, format } from "date-fns-tz";
 import { startOfDay, endOfDay } from "date-fns";
 import { Attendance, Kid } from "@prisma/client";
